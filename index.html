@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Motivation - Minimalist Style</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+        }
+        header {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        .card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.6rem;
+        }
+        .card p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #6e6e73;
+        }
+        .countdown {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            color: #0070c9;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .progress-bar-inner {
+            height: 20px;
+            background-color: #0070c9;
+            width: 0%;
+            border-radius: 5px;
+            transition: width 0.5s;
+        }
+        .button {
+            display: inline-block;
+            background-color: #0070c9;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Exam Motivation</h1>
+    </header>
+    <div class="container">
+        <div class="card">
+            <h2>Countdown to Your Exam</h2>
+            <p class="countdown" id="countdown">Loading...</p>
+        </div>
+        <div class="card">
+            <h2>Progress Tracker</h2>
+            <p>Track your progress as you prepare for your exams:</p>
+            <div class="progress-bar">
+                <div class="progress-bar-inner" id="progress-bar-inner"></div>
+            </div>
+        </div>
+        <div class="card">
+            <h2>Need a Break?</h2>
+            <p>Feeling overwhelmed? Take a short break and get inspired:</p>
+            <a href="https://github.com" class="button">Visit GitHub</a>
+        </div>
+    </div>
+    <footer>
+        &copy; 2024 Minimalist Motivation. All Rights Reserved.
+    </footer>
+    <script>
+        // Countdown Timer
+        const countdownElement = document.getElementById('countdown');
+        const examDate = new Date('2024-12-31T00:00:00');
+
+        function updateCountdown() {
+            const now = new Date();
+            const timeRemaining = examDate - now;
+
+            if (timeRemaining > 0) {
+                const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+                countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            } else {
+                countdownElement.textContent = 'Exam Time!';
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+
+        // Progress Tracker
+        const progressBarInner = document.getElementById('progress-bar-inner');
+        let progress = 0;
+
+        function updateProgress() {
+            if (progress < 100) {
+                progress += 1; // Simulate progress (customize as needed)
+                progressBarInner.style.width = `${progress}%`;
+            }
+        }
+
+        setInterval(updateProgress, 1000); // Simulate progress update every second
+    </script>
+</body>
+</html>
